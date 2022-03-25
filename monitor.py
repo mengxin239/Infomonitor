@@ -43,15 +43,11 @@ def findword(client, message):
 
 def send(message):
     url=r"https://api.telegram.org/bot"+token+"/sendMessage"
-    proxies={
-    'http':'127.0.0.1:7890',
-    'https':'127.0.0.1:7890'
-    }
     data={}
     data["text"]=message
     data["chat_id"]=chat_id
     logging.debug(f"请求参数:{data}")
-    response=requests.post(url=url,data=data,proxies=proxies)
+    response=requests.post(url=url,data=data)
     logging.debug(f"返回数据:{response.text}")
     logging.info("转发到Channel成功")
 
