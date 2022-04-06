@@ -37,15 +37,13 @@ def findword(client, message):
     lastword=[]
     for i in range(0,len(word)):
         lastword.append(word[i])
-    print(word)
-    print(lastword)
-
 
 def send(message):
     url=r"https://api.telegram.org/bot"+token+"/sendMessage"
     data={}
     data["text"]=message
     data["chat_id"]=chat_id
+    data["parse_mode"]="MarkdownV2"
     logging.debug(f"请求参数:{data}")
     response=requests.post(url=url,data=data)
     logging.debug(f"返回数据:{response.text}")
